@@ -1,0 +1,1575 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prumysl | حلول المراقبة والإضاءة بالطاقة الشمسية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171a2d;
+      --muted: #74788d;
+      --blue: #202895;
+      --paper: #ffffff;
+      --line: rgba(23, 26, 45, 0.14);
+      --lime: #d9ef8b;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Cairo", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img,
+    svg { max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .site-header {
+      width: min(100% - 64px, 1380px);
+      min-height: 92px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 28px;
+      direction: ltr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      justify-self: end;
+      display: inline-flex;
+      align-items: center;
+      direction: ltr;
+    }
+
+    .brand img {
+      display: block;
+      width: 142px;
+      height: auto;
+    }
+
+    .main-nav {
+      justify-self: start;
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 3vw, 48px);
+      direction: rtl;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .main-nav a {
+      position: relative;
+      padding: 8px 0;
+      transition: color 180ms ease;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--blue);
+      transition: width 180ms ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible { color: var(--blue); }
+
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after { width: 100%; }
+
+    .header-cta {
+      justify-self: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 17px;
+      border: 1px solid var(--blue);
+      border-radius: 999px;
+      color: var(--blue);
+      direction: rtl;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .header-cta span {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .header-cta:hover,
+    .header-cta:focus-visible {
+      background: var(--blue);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      width: min(100% - 64px, 1380px);
+      min-height: calc(100vh - 92px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+      align-items: center;
+      gap: clamp(40px, 7vw, 110px);
+      padding: 64px 0;
+      direction: ltr;
+    }
+
+    .hero-copy {
+      direction: rtl;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      margin: 0 0 22px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 650px;
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(30px, 5vw, 68px);
+      font-weight: 800;
+      line-height: 1.12;
+    }
+
+    .title-line {
+      display: block;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(90px) rotateX(-75deg);
+      transform-origin: 50% 50% -120px;
+    }
+
+    .title-line + .title-line {
+      margin-top: 8px;
+    }
+
+    .hero-title.is-visible .title-line {
+      animation: reveal-title-line 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-title.is-visible .title-line:nth-child(2) {
+      animation-delay: 180ms;
+    }
+
+    @keyframes reveal-title-line {
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+      }
+    }
+
+    .hero-copy > p:last-child {
+      max-width: 520px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.9;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: min(66vh, 640px);
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--blue);
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 32%;
+      background: linear-gradient(transparent, rgba(23, 26, 45, 0.58));
+    }
+
+    .hero-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: min(66vh, 640px);
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .products {
+      width: min(100% - 64px, 1380px);
+      margin: 0 auto;
+      padding: 40px 0 110px;
+      direction: rtl;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      max-width: 560px;
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      max-width: 360px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .product-card {
+      min-height: 292px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: #fff;
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-4px);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--lime);
+    }
+
+    .product-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-number {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .product-card h3 {
+      margin: 26px 0 10px;
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .product-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .product-actions {
+      display: grid;
+      gap: 8px;
+      margin-top: 26px;
+    }
+
+    .product-actions a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 9px 11px;
+      border: 1px solid var(--line);
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      direction: ltr;
+      transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+
+    .product-actions a:hover,
+    .product-actions a:focus-visible {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .consultation-note {
+      margin-top: 34px;
+      padding: 24px 26px;
+      border: 1px solid var(--blue);
+      background: var(--lime);
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .solutions {
+      width: min(100% - 64px, 1380px);
+      margin: 0 auto;
+      padding: 86px 0 120px;
+      direction: rtl;
+    }
+
+    .solutions-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 34px;
+    }
+
+    .solutions-header h2 {
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: 1.2;
+    }
+
+    .solutions-header p {
+      max-width: 380px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .solution-card {
+      min-height: 220px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .solution-card span {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .solution-card h3 {
+      margin: 52px 0 12px;
+      color: var(--ink);
+      font-size: 22px;
+    }
+
+    .solution-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .solution-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .solution-tab {
+      flex: 1;
+      padding: 15px 18px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .solution-tab:hover,
+    .solution-tab:focus-visible,
+    .solution-tab[aria-selected="true"] {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+      outline: none;
+    }
+
+    .solution-panel {
+      display: none;
+      grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1.25fr);
+      gap: clamp(28px, 6vw, 90px);
+      align-items: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .solution-panel[aria-hidden="false"] {
+      display: grid;
+    }
+
+    .solution-panel-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--lime);
+    }
+
+    .solution-panel-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .solution-panel-copy {
+      direction: rtl;
+    }
+
+    .solution-panel-copy span {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .solution-panel-copy h3 {
+      margin: 18px 0 12px;
+      color: var(--ink);
+      font-size: clamp(26px, 4vw, 44px);
+    }
+
+    .solution-panel-copy p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .stats-section {
+      width: min(100% - 64px, 1380px);
+      margin: 0 auto;
+      padding: 86px 0 120px;
+      direction: rtl;
+    }
+
+    .stats-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 34px;
+    }
+
+    .stats-heading h2 {
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: 1.2;
+    }
+
+    .stats-heading p {
+      max-width: 380px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat-card {
+      position: relative;
+      min-height: 300px;
+      padding: 22px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #f7f8fc;
+    }
+
+    .stat-card h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 17px;
+    }
+
+    .stat-card-label {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .line-chart {
+      width: 100%;
+      height: 150px;
+      margin-top: 26px;
+      overflow: visible;
+    }
+
+    .line-chart .chart-grid {
+      fill: none;
+      stroke: rgba(23, 26, 45, 0.1);
+      stroke-width: 0.6;
+      stroke-dasharray: 2 3;
+    }
+
+    .line-chart .chart-area {
+      fill: url(#stats-area);
+      opacity: 0;
+    }
+
+    .line-chart .chart-path {
+      fill: none;
+      stroke: var(--blue);
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+
+    .stats-section.is-visible .chart-area {
+      animation: fade-area 900ms 450ms ease forwards;
+    }
+
+    .stats-section.is-visible .chart-path {
+      animation: draw-chart 1200ms ease forwards;
+    }
+
+    @keyframes draw-chart {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes fade-area {
+      to { opacity: 1; }
+    }
+
+    .stat-value {
+      margin: 0;
+      color: var(--blue);
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .stat-change {
+      margin: 10px 0 0;
+      color: #2a9d62;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .circle-chart {
+      position: relative;
+      width: 150px;
+      margin: 28px auto 16px;
+    }
+
+    .circle-chart svg {
+      display: block;
+      width: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .circle-chart circle {
+      fill: none;
+      stroke-width: 8;
+    }
+
+    .circle-track { stroke: rgba(32, 40, 149, 0.12); }
+
+    .circle-progress {
+      stroke: var(--blue);
+      stroke-linecap: round;
+      stroke-dasharray: 0 100;
+      transition: stroke-dasharray 1200ms ease;
+    }
+
+    .stats-section.is-visible .circle-progress {
+      stroke-dasharray: var(--progress) 100;
+    }
+
+    .circle-value {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .about-section {
+      width: min(100% - 64px, 1380px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
+      align-items: center;
+      gap: clamp(42px, 8vw, 120px);
+      padding: 86px 0 120px;
+      direction: ltr;
+    }
+
+    .about-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--lime);
+    }
+
+    .about-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .about-copy {
+      direction: rtl;
+    }
+
+    .about-copy h2 {
+      max-width: 620px;
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(32px, 5vw, 68px);
+      line-height: 1.2;
+    }
+
+    .about-copy p {
+      max-width: 560px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 2;
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 560px;
+      margin-top: 34px;
+    }
+
+    .about-point {
+      padding-top: 14px;
+      border-top: 2px solid var(--lime);
+    }
+
+    .about-point strong {
+      display: block;
+      color: var(--blue);
+      font-size: 14px;
+    }
+
+    .about-point span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .contact-section {
+      width: min(100% - 64px, 1100px);
+      margin: 0 auto;
+      padding: 86px 0 120px;
+      direction: rtl;
+    }
+
+    .contact-heading {
+      max-width: 620px;
+      margin-bottom: 34px;
+    }
+
+    .contact-heading h2 {
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: 1.2;
+    }
+
+    .contact-heading p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: #f7f8fc;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-field-wide {
+      grid-column: 1 / -1;
+    }
+
+    .form-field label {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 0;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      padding: 13px 14px;
+      direction: rtl;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--blue);
+      outline: 2px solid rgba(32, 40, 149, 0.16);
+      outline-offset: 1px;
+    }
+
+    .form-field textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-submit {
+      grid-column: 1 / -1;
+      justify-self: start;
+      padding: 13px 22px;
+      border: 1px solid var(--blue);
+      background: var(--blue);
+      color: #fff;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .contact-submit:hover,
+    .contact-submit:focus-visible {
+      background: var(--lime);
+      color: var(--blue);
+      outline: none;
+    }
+
+    .faq-section {
+      width: min(100% - 64px, 900px);
+      margin: 0 auto;
+      padding: 86px 0 120px;
+      direction: rtl;
+    }
+
+    .faq-heading {
+      margin-bottom: 30px;
+    }
+
+    .faq-heading h2 {
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: 1.2;
+    }
+
+    .faq-heading p {
+      max-width: 500px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 0;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 17px;
+      font-weight: 700;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::after {
+      content: "+";
+      flex: 0 0 auto;
+      color: var(--blue);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1;
+      transition: transform 180ms ease;
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-item summary:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 4px;
+    }
+
+    .faq-answer {
+      max-width: 700px;
+      padding: 0 0 22px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .site-footer {
+      padding: 76px 32px 26px;
+      background: var(--blue);
+      color: #fff;
+      text-align: center;
+      direction: rtl;
+    }
+
+    .footer-logo {
+      display: block;
+      width: min(280px, 72vw);
+      margin: 0 auto 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-tagline {
+      max-width: 480px;
+      margin: 0 auto 52px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 32px;
+      width: min(100%, 1100px);
+      margin: 0 auto 46px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer-nav a:hover,
+    .footer-nav a:focus-visible { color: var(--lime); }
+
+    .footer-contact {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      width: min(100%, 1100px);
+      margin: 0 auto 24px;
+      color: var(--lime);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer-contact span {
+      display: inline-block;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    .footer-contact a {
+      display: inline-block;
+      margin: 0;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .footer-contact a:hover,
+    .footer-contact a:focus-visible { color: var(--lime); }
+
+    .footer-mark {
+      justify-self: start;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 11px;
+    }
+
+    .footer-bottom {
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 11px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 10;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--blue);
+      border-radius: 50%;
+      background: var(--lime);
+      color: var(--blue);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    .back-to-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      background: #fff;
+      outline: none;
+    }
+
+    .back-to-top svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2;
+    }
+
+    @media (max-width: 1200px) {
+      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { gap: 48px; }
+    }
+
+    @media (max-width: 960px) and (min-width: 801px) {
+      .site-header,
+      .hero,
+      .products,
+      .solutions,
+      .stats-section,
+      .about-section,
+      .contact-section { width: min(100% - 48px, 900px); }
+
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1.15fr); }
+      .solution-panel { gap: 36px; }
+    }
+
+    @media (max-width: 800px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .footer-contact,
+      .footer-mark { justify-self: center; }
+      .footer-contact a { overflow-wrap: anywhere; }
+    }
+
+    @media (max-width: 800px) {
+      body { overflow-x: hidden; }
+
+      .site-header,
+      .hero { width: min(100% - 36px, 620px); }
+
+      .site-header {
+        min-height: 78px;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+      }
+
+      .brand { grid-column: 2; grid-row: 1; }
+      .brand img { width: 116px; }
+      .header-cta { grid-column: 1; grid-row: 1; justify-self: start; padding: 9px 13px; }
+      .main-nav { grid-column: 1 / -1; grid-row: 2; justify-self: stretch; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; padding: 0 0 18px; font-size: 11px; text-align: center; }
+      .main-nav a { min-width: 0; line-height: 1.5; }
+      .site-header { padding-top: 12px; }
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 42px;
+        padding: 56px 0 72px;
+      }
+      .hero-copy { order: 1; }
+      .hero-visual { order: 2; min-height: 54vw; }
+      .hero-visual img { min-height: 54vw; }
+      .products { width: min(100% - 36px, 620px); padding: 20px 0 72px; }
+      .section-heading { display: block; margin-bottom: 26px; }
+      .section-heading p { margin-top: 14px; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .solutions { width: min(100% - 36px, 620px); padding: 60px 0 80px; }
+      .solutions-header { display: block; margin-bottom: 26px; }
+      .solutions-header p { margin-top: 14px; }
+      .solution-grid { grid-template-columns: 1fr; }
+      .solution-tabs { display: grid; grid-template-columns: 1fr; }
+      .solution-panel { grid-template-columns: 1fr; padding: 16px; }
+      .stats-section { width: min(100% - 36px, 620px); padding: 60px 0 80px; }
+      .stats-heading { display: block; margin-bottom: 26px; }
+      .stats-heading p { margin-top: 14px; }
+      .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about-section { width: min(100% - 36px, 620px); grid-template-columns: 1fr; gap: 42px; padding: 60px 0 80px; }
+      .about-image { order: 2; }
+      .about-copy { order: 1; }
+      .contact-section { width: min(100% - 36px, 620px); padding: 60px 0 80px; }
+      .contact-form { grid-template-columns: 1fr; padding: 20px; }
+      .form-field-wide,
+      .contact-submit { grid-column: auto; }
+      .faq-section { width: min(100% - 36px, 620px); padding: 60px 0 80px; }
+    }
+
+    @media (max-width: 430px) {
+      .site-header,
+      .hero { width: min(100% - 28px, 620px); }
+      .main-nav { gap: 3px; padding-bottom: 14px; font-size: 9px; }
+      .main-nav a { padding: 6px 0; }
+      .header-cta { padding: 9px 11px; font-size: 10px; }
+      .hero { gap: 28px; padding-top: 42px; }
+      h1 { font-size: 28px; }
+      .hero-copy > p:last-child { margin-top: 20px; font-size: 15px; line-height: 1.8; }
+      .eyebrow { margin-bottom: 16px; font-size: 11px; }
+      .hero-visual,
+      .hero-visual img { min-height: 72vw; }
+      .products { width: min(100% - 28px, 620px); }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-card { padding: 16px; }
+      .product-card h3 { margin-top: 18px; font-size: 19px; }
+      .product-actions { grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 20px; }
+      .product-actions a { min-height: 42px; padding: 8px; font-size: 10px; }
+      .solutions { width: min(100% - 28px, 620px); }
+      .solution-tab { min-height: 46px; padding: 12px; font-size: 13px; }
+      .solution-panel-copy h3 { margin-top: 14px; font-size: 28px; }
+      .solution-panel-copy p { font-size: 14px; }
+      .stats-section { width: min(100% - 28px, 620px); }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-card { min-height: 280px; }
+      .line-chart { height: 130px; }
+      .about-section { width: min(100% - 28px, 620px); }
+      .about-points { grid-template-columns: 1fr; }
+      .contact-section { width: min(100% - 28px, 620px); }
+      .contact-form { padding: 16px; gap: 15px; }
+      .contact-submit { width: 100%; }
+      .faq-section { width: min(100% - 28px, 620px); }
+      .faq-item summary { gap: 14px; padding: 18px 0; font-size: 15px; }
+      .faq-answer { font-size: 13px; }
+      .site-footer { padding: 56px 16px 22px; }
+      .footer-logo { width: min(220px, 70vw); }
+      .footer-tagline { margin-bottom: 36px; font-size: 13px; }
+      .footer-content { gap: 18px; margin-bottom: 28px; padding: 20px 0; }
+      .footer-nav { gap: 10px 16px; font-size: 12px; }
+      .footer-contact { gap: 6px 14px; font-size: 12px; }
+      .footer-contact a { font-size: 12px; }
+      .back-to-top { right: 14px; bottom: 14px; width: 40px; height: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <a href="#home">1. الرئيسية</a>
+      <a href="#solutions">2. حلولنا</a>
+      <a href="#about">3. من نحن</a>
+      <a href="#insights">4. مسارنا</a>
+      <a href="#faq">5. الأسئلة الشائعة</a>
+    </nav>
+
+    <a class="header-cta" href="#contact">
+      تواصل معنا
+      <span aria-hidden="true">↗</span>
+    </a>
+
+    <a class="brand" href="#home" aria-label="Průmysl - الصفحة الرئيسية">
+      <img src="logo.svg" alt="Průmysl">
+    </a>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">حلول شمسية للمغرب</p>
+      <h1 class="hero-title">
+        <span class="title-line">طاقة شمسية تحمي</span>
+        <span class="title-line">وتنير مساحتك.</span>
+      </h1>
+      <p>حلول Prumysl للمراقبة والإضاءة الخارجية في المغرب: كاميرات 4G وبروجيكتورات LED شمسية، بدون تمديدات كهربائية معقدة.</p>
+    </div>
+
+    <div class="hero-visual">
+      <img src="https://prumysl.cc/MMPM300/images/Home-Moka.jpeg" alt="كاميرا موكا الشمسية من Prumysl">
+    </div>
+  </main>
+
+  <section id="products" class="products" aria-labelledby="products-title">
+    <div class="section-heading">
+      <h2 id="products-title">حلول شمسية للمراقبة والإضاءة.</h2>
+      <p>استكشف مجموعة Prumysl للمواقع الخارجية. هذه الصفحة مخصصة للاطلاع والمناقشة مع فريقنا، وليست مخصصة للشراء أو الطلب المباشر.</p>
+    </div>
+
+    <div class="product-grid">
+      <article class="product-card">
+        <div>
+          <div class="product-image">
+            <img src="https://prumysl.cc/moka-pro-max/images/F-1.jpg" alt="كاميرا M PRO MAX الشمسية بثلاث عدسات">
+          </div>
+          <span class="product-number">1 / 5</span>
+          <h3>M PRO MAX</h3>
+          <p>ثلاث عدسات، 4G، زووم بصري 10× وطاقة شمسية للمراقبة الخارجية.</p>
+        </div>
+        <div class="product-actions">
+          <a href="#contact">الوصول إلى الملف <span aria-hidden="true">↗</span></a>
+          <a href="#contact">عرض معلومات المنتج <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div>
+          <div class="product-image">
+            <img src="https://prumysl.cc/guard-corps/images/lenses.jpeg" alt="كاميرا GC الشمسية بثلاث عدسات PTZ">
+          </div>
+          <span class="product-number">2 / 5</span>
+          <h3>GC</h3>
+          <p>ثلاث عدسات PTZ، ثلاث شاشات حية، 15MP واتصال 4G للمراقبة شبه 360°.</p>
+        </div>
+        <div class="product-actions">
+          <a href="#contact">الوصول إلى الملف <span aria-hidden="true">↗</span></a>
+          <a href="#contact">عرض معلومات المنتج <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div>
+          <div class="product-image">
+            <img src="https://prumysl.cc/guard-corps/images/F-2.gif" alt="كاميرا GC PRO MAX للمراقبة الشمسية">
+          </div>
+          <span class="product-number">3 / 5</span>
+          <h3>GC PRO MAX</h3>
+          <p>حل مراقبة احترافي للمواقع الخارجية؛ تواصل معنا لمعرفة المواصفات المناسبة لمشروعك.</p>
+        </div>
+        <div class="product-actions">
+          <a href="#contact">الوصول إلى الملف <span aria-hidden="true">↗</span></a>
+          <a href="#contact">عرض معلومات المنتج <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div>
+          <div class="product-image">
+            <img src="https://prumysl.cc/saqr/images/hero.jpg" alt="كاميرا SAQR الشمسية بزووم بصري 36x">
+          </div>
+          <span class="product-number">4 / 5</span>
+          <h3>SAQR</h3>
+          <p>24MP، زووم بصري 36×، 4G، طاقة 20W وبطارية 12000mAh للضيعات والفلل.</p>
+        </div>
+        <div class="product-actions">
+          <a href="#contact">الوصول إلى الملف <span aria-hidden="true">↗</span></a>
+          <a href="#contact">عرض معلومات المنتج <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div>
+          <div class="product-image">
+            <img src="https://prumysl.cc/projectors/images/300W.webp" alt="بروجيكتور PROJECTOR 300W الشمسي">
+          </div>
+          <span class="product-number">5 / 5</span>
+          <h3>PROJECTOR 300W</h3>
+          <p>إضاءة خارجية قوية بالطاقة الشمسية، ريموت للتحكم وضمان 3 سنوات.</p>
+        </div>
+        <div class="product-actions">
+          <a href="#contact">الوصول إلى الملف <span aria-hidden="true">↗</span></a>
+          <a href="#contact">عرض معلومات المنتج <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+    </div>
+
+    <p id="consultation-note" class="consultation-note">للاطلاع على أي منتج ومناقشة ملاءمته لعملك، تواصل معنا للاستشارة.</p>
+  </section>
+
+  <section id="solutions" class="solutions" aria-labelledby="solutions-title">
+    <div class="solutions-header">
+      <h2 id="solutions-title">حلول عملية للمواقع الخارجية.</h2>
+      <p>نساعدك على اختيار منظومة مراقبة أو إضاءة شمسية تناسب المساحة، التغطية، والاحتياج الفعلي لموقعك.</p>
+    </div>
+
+    <div class="solution-tabs" role="tablist" aria-label="حلولنا">
+      <button class="solution-tab" id="tab-strategy" type="button" role="tab" aria-selected="true" aria-controls="panel-strategy">1. الاستراتيجية</button>
+      <button class="solution-tab" id="tab-brand" type="button" role="tab" aria-selected="false" aria-controls="panel-brand" tabindex="-1">2. العلامة والتجربة</button>
+      <button class="solution-tab" id="tab-growth" type="button" role="tab" aria-selected="false" aria-controls="panel-growth" tabindex="-1">3. التنفيذ والنمو</button>
+    </div>
+
+    <div class="solution-panel" id="panel-strategy" role="tabpanel" aria-labelledby="tab-strategy" aria-hidden="false">
+      <div class="solution-panel-image">
+        <img src="https://prumysl.cc/moka-pro-max/images/F-1.jpg" alt="كاميرا M PRO MAX الشمسية للمراقبة">
+      </div>
+      <div class="solution-panel-copy">
+        <span>01 / المراقبة الشمسية</span>
+        <h3>أمان مستمر بدون تمديدات معقدة.</h3>
+        <p>كاميرات 4G تعمل بالطاقة الشمسية، مع رؤية ليلية، كشف حركة، وتتبع من الهاتف للمنازل والضيعات والمواقع البعيدة.</p>
+      </div>
+    </div>
+
+    <div class="solution-panel" id="panel-brand" role="tabpanel" aria-labelledby="tab-brand" aria-hidden="true">
+      <div class="solution-panel-image">
+        <img src="https://prumysl.cc/projectors/images/Projector-solar.jpeg" alt="بروجيكتور Prumysl الشمسي للإضاءة الخارجية">
+      </div>
+      <div class="solution-panel-copy">
+        <span>02 / الإضاءة الخارجية</span>
+        <h3>إضاءة قوية من طاقة الشمس.</h3>
+        <p>بروجيكتورات LED بقدرة 300W أو 400W، ببطارية داخلية وريموت، مناسبة للمداخل والحدائق والأسطح والضيعات.</p>
+      </div>
+    </div>
+
+    <div class="solution-panel" id="panel-growth" role="tabpanel" aria-labelledby="tab-growth" aria-hidden="true">
+      <div class="solution-panel-image">
+        <img src="https://prumysl.cc/saqr/images/zoom.gif" alt="كاميرا SAQR الشمسية بزووم بصري بعيد">
+      </div>
+      <div class="solution-panel-copy">
+        <span>03 / المواقع البعيدة</span>
+        <h3>حلول تعمل حيث لا تصل الكهرباء.</h3>
+        <p>اتصال 4G وطاقة شمسية ومقاومة للاستخدام الخارجي، لتغطية الفلل والضيعات والمحلات والمداخل بدون Wi-Fi أو تمديدات دائمة.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="insights" class="stats-section" aria-labelledby="stats-title">
+    <div class="stats-heading">
+      <h2 id="stats-title">أثر يتحول إلى أرقام.</h2>
+      <p>نقيس التقدم بوضوح حتى ترى الفرق بين النشاط والنمو الحقيقي.</p>
+    </div>
+
+    <div class="stats-grid">
+      <article class="stat-card">
+        <h3>ساعات العمل</h3>
+        <p class="stat-card-label">وقت استثماره في التقدم</p>
+        <svg class="line-chart" viewBox="0 0 100 45" role="img" aria-label="مخطط صاعد لساعات العمل">
+          <defs>
+            <linearGradient id="stats-area" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#202895" stop-opacity="0.2"></stop>
+              <stop offset="1" stop-color="#202895" stop-opacity="0"></stop>
+            </linearGradient>
+          </defs>
+          <path class="chart-grid" d="M0 10H100 M0 22H100 M0 34H100"></path>
+          <path class="chart-area" d="M0 36 L14 30 L28 32 L42 20 L56 24 L70 12 L84 16 L100 5 V45 H0 Z"></path>
+          <path class="chart-path" pathLength="1" d="M0 36 L14 30 L28 32 L42 20 L56 24 L70 12 L84 16 L100 5"></path>
+        </svg>
+        <p class="stat-value">1,689</p>
+        <p class="stat-change">+24% هذا العام</p>
+      </article>
+
+      <article class="stat-card">
+        <h3>مشاريع منجزة</h3>
+        <p class="stat-card-label">من الفكرة إلى التنفيذ</p>
+        <svg class="line-chart" viewBox="0 0 100 45" role="img" aria-label="مخطط صاعد للمشاريع المنجزة">
+          <path class="chart-grid" d="M0 10H100 M0 22H100 M0 34H100"></path>
+          <path class="chart-area" d="M0 8 L14 15 L28 13 L42 25 L56 20 L70 28 L84 18 L100 34 V45 H0 Z"></path>
+          <path class="chart-path" pathLength="1" d="M0 8 L14 15 L28 13 L42 25 L56 20 L70 28 L84 18 L100 34"></path>
+        </svg>
+        <p class="stat-value">322</p>
+        <p class="stat-change">+18% هذا العام</p>
+      </article>
+
+      <article class="stat-card">
+        <h3>رضا العملاء</h3>
+        <p class="stat-card-label">تجارب تستمر وتنمو</p>
+        <div class="circle-chart" style="--progress: 77" role="img" aria-label="نسبة رضا العملاء 77 بالمئة">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="circle-track" pathLength="100" cx="50" cy="50" r="42"></circle>
+            <circle class="circle-progress" pathLength="100" cx="50" cy="50" r="42"></circle>
+          </svg>
+          <span class="circle-value">77%</span>
+        </div>
+        <p class="stat-change">+12% مقارنة بالعام الماضي</p>
+      </article>
+
+      <article class="stat-card">
+        <h3>وضوح الاتجاه</h3>
+        <p class="stat-card-label">فرق تعرف خطوتها التالية</p>
+        <div class="circle-chart" style="--progress: 53" role="img" aria-label="نسبة وضوح الاتجاه 53 بالمئة">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="circle-track" pathLength="100" cx="50" cy="50" r="42"></circle>
+            <circle class="circle-progress" pathLength="100" cx="50" cy="50" r="42"></circle>
+          </svg>
+          <span class="circle-value">53%</span>
+        </div>
+        <p class="stat-change">+9% مقارنة بالعام الماضي</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="about-section" aria-labelledby="about-title">
+    <div class="about-image">
+      <img src="https://prumysl.cc/MMPM300/images/Solar-Panels.jpg" alt="ألواح شمسية لحلول Prumysl الخارجية">
+    </div>
+
+    <div class="about-copy">
+      <p class="eyebrow">من نحن</p>
+      <h2 id="about-title">نحن Prumysl، شريكك في الطاقة الشمسية.</h2>
+      <p>نوفر في المغرب حلولًا عملية للمراقبة والإضاءة الخارجية: كاميرات شمسية 4G وبروجيكتورات LED مصممة للعمل باستقلالية، مع دعم سريع وخدمة ما بعد البيع.</p>
+
+      <div class="about-points">
+        <div class="about-point">
+          <strong>بدون فاتورة كهرباء</strong>
+          <span>طاقة شمسية وبطاريات للاستخدام الخارجي.</span>
+        </div>
+        <div class="about-point">
+          <strong>دعم محلي</strong>
+          <span>توصيل مجاني ودعم عبر الهاتف وواتساب.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section" aria-labelledby="contact-title">
+    <div class="contact-heading">
+      <p class="eyebrow">تواصل معنا</p>
+      <h2 id="contact-title">لنبني الخطوة التالية معًا.</h2>
+      <p>أخبرنا قليلًا عن تحديك، وسنعود إليك بمحادثة واضحة ومناسبة لاحتياج فريقك.</p>
+    </div>
+
+    <form class="contact-form" action="mailto:prumyslmaroc@gmail.com" method="post" enctype="text/plain">
+      <div class="form-field">
+        <label for="contact-name">الاسم الكامل</label>
+        <input id="contact-name" name="الاسم" type="text" autocomplete="name" required>
+      </div>
+
+      <div class="form-field">
+        <label for="contact-email">البريد الإلكتروني</label>
+        <input id="contact-email" name="البريد الإلكتروني" type="email" autocomplete="email" required>
+      </div>
+
+      <div class="form-field">
+        <label for="contact-company">اسم الشركة</label>
+        <input id="contact-company" name="الشركة" type="text" autocomplete="organization">
+      </div>
+
+      <div class="form-field">
+        <label for="contact-phone">رقم الهاتف</label>
+        <input id="contact-phone" name="الهاتف" type="tel" dir="ltr" autocomplete="tel">
+      </div>
+
+      <div class="form-field form-field-wide">
+        <label for="contact-message">كيف يمكننا مساعدتك؟</label>
+        <textarea id="contact-message" name="الرسالة" required></textarea>
+      </div>
+
+      <button class="contact-submit" type="submit">إرسال الاستشارة ↗</button>
+    </form>
+  </section>
+
+  <section id="faq" class="faq-section" aria-labelledby="faq-title">
+    <div class="faq-heading">
+      <h2 id="faq-title">أسئلة تستحق إجابات واضحة.</h2>
+      <p>كل ما تحتاج معرفته قبل بدء محادثة استشارية معنا.</p>
+    </div>
+
+    <details class="faq-item" open>
+      <summary>هل تحتاج الكاميرات إلى Wi-Fi أو كهرباء منزلية؟</summary>
+      <p class="faq-answer">لا. نماذج الكاميرات الشمسية تعمل عبر شريحة 4G، وتستمد طاقتها من الألواح الشمسية والبطارية الداخلية، ما يجعلها مناسبة للمواقع البعيدة.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>أين يمكن استخدام هذه المنتجات؟</summary>
+      <p class="faq-answer">تناسب الفلل، المداخل، الحدائق، الأسطح، المحلات، الضيعات والمواقع التي لا تتوفر فيها تمديدات كهربائية أو إنترنت ثابت.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>ما الفرق بين البروجيكتور 300W و400W؟</summary>
+      <p class="faq-answer">كلاهما يعمل بالطاقة الشمسية مع بطارية داخلية وريموت للتحكم. 300W مناسب للمداخل والأسطح المتوسطة، بينما 400W يناسب المساحات الأكبر.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>هل توجد خدمة ما بعد البيع والضمان؟</summary>
+      <p class="faq-answer">نعم، نوفر دعمًا عبر الهاتف وواتساب. ويصل ضمان البروجيكتورات الشمسية إلى 3 سنوات حسب المنتج.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>كيف أطلب استشارة حول المنتج المناسب؟</summary>
+      <p class="faq-answer">استخدم نموذج التواصل وأرسل نوع الموقع والاحتياج التقريبي، وسيساعدك فريق Prumysl على اختيار الحل الأنسب قبل أي طلب.</p>
+    </details>
+  </section>
+
+  <footer class="site-footer">
+    <img class="footer-logo" src="logo.svg" alt="Průmysl">
+    <p class="footer-tagline">مراقبة وإضاءة بالطاقة الشمسية، مصممة للمغرب.</p>
+    <div class="footer-content">
+      <div class="footer-mark">© 2026 Průmysl</div>
+      <nav class="footer-nav" aria-label="روابط التذييل">
+        <a href="#home">الرئيسية</a>
+        <a href="#products">المنتجات</a>
+        <a href="#solutions">حلولنا</a>
+        <a href="#about">من نحن</a>
+        <a href="#faq">الأسئلة الشائعة</a>
+      </nav>
+    </div>
+    <div class="footer-contact">
+      <span>هل لديك سؤال؟</span>
+      <a href="mailto:prumyslmaroc@gmail.com">prumyslmaroc@gmail.com</a>
+      <a href="tel:+212723496854" dir="ltr">+212 7 23 49 68 54</a>
+      <a href="#contact">الدار البيضاء، عين السبع، تيزي أوسلي</a>
+    </div>
+    <div class="footer-bottom">حلول شمسية تعمل حيث تحتاجها.</div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="العودة إلى أعلى الصفحة" title="العودة إلى أعلى الصفحة">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 19V5M6 11l6-6 6 6"></path>
+    </svg>
+  </button>
+
+  <script>
+    const backToTopButton = document.querySelector('.back-to-top');
+
+    function updateBackToTopVisibility() {
+      backToTopButton.classList.toggle('is-visible', window.scrollY > 500);
+    }
+
+    window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    updateBackToTopVisibility();
+
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSection = document.querySelector('.hero');
+
+    if ('IntersectionObserver' in window && heroTitle && heroSection) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          heroTitle.classList.toggle('is-visible', entry.isIntersecting);
+        });
+      }, { threshold: 0.35 });
+
+      heroObserver.observe(heroSection);
+    } else if (heroTitle) {
+      heroTitle.classList.add('is-visible');
+    }
+
+    const solutionTabs = Array.from(document.querySelectorAll('.solution-tab'));
+
+    function activateSolutionTab(selectedTab) {
+      solutionTabs.forEach((tab) => {
+        const isSelected = tab === selectedTab;
+        const panel = document.getElementById(tab.getAttribute('aria-controls'));
+
+        tab.setAttribute('aria-selected', String(isSelected));
+        tab.tabIndex = isSelected ? 0 : -1;
+        panel.setAttribute('aria-hidden', String(!isSelected));
+      });
+    }
+
+    solutionTabs.forEach((tab, tabIndex) => {
+      tab.addEventListener('click', () => activateSolutionTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+
+        event.preventDefault();
+        const direction = event.key === 'ArrowRight' ? 1 : -1;
+        const nextIndex = (tabIndex + direction + solutionTabs.length) % solutionTabs.length;
+        solutionTabs[nextIndex].focus();
+        activateSolutionTab(solutionTabs[nextIndex]);
+      });
+    });
+
+    const statsSection = document.querySelector('.stats-section');
+
+    if ('IntersectionObserver' in window && statsSection) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          statsSection.classList.toggle('is-visible', entry.isIntersecting);
+        });
+      }, { threshold: 0.2 });
+
+      statsObserver.observe(statsSection);
+    } else if (statsSection) {
+      statsSection.classList.add('is-visible');
+    }
+  </script>
+</body>
+</html>
