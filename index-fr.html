@@ -187,6 +187,16 @@
       animation-delay: 180ms;
     }
 
+    .reveal-title {
+      opacity: 0;
+      transform: translateY(70px) rotateX(-60deg);
+      transform-origin: 50% 50% -120px;
+    }
+
+    .reveal-title.is-visible {
+      animation: reveal-title-line 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
     @keyframes reveal-title-line {
       to {
         opacity: 1;
@@ -1237,7 +1247,7 @@
 
   <section id="products" class="products" aria-labelledby="products-title">
     <div class="section-heading">
-      <h2 id="products-title">Solutions solaires de surveillance et d’éclairage.</h2>
+      <h2 id="products-title" class="reveal-title">Solutions solaires de surveillance et d’éclairage.</h2>
       <p>Découvrez la gamme Prumysl pour les sites extérieurs. Cette page est dédiée à la consultation et à l’échange avec notre équipe, et non à la commande directe.</p>
     </div>
 
@@ -1323,7 +1333,7 @@
 
   <section id="solutions" class="solutions" aria-labelledby="solutions-title">
     <div class="solutions-header">
-      <h2 id="solutions-title">Solutions concrètes pour les sites extérieurs.</h2>
+      <h2 id="solutions-title" class="reveal-title">Solutions concrètes pour les sites extérieurs.</h2>
       <p>Nous vous aidons à choisir une solution de surveillance ou d’éclairage solaire adaptée à votre espace, à votre couverture et à vos besoins réels.</p>
     </div>
 
@@ -1369,7 +1379,7 @@
 
   <section id="insights" class="stats-section" aria-labelledby="stats-title">
     <div class="stats-heading">
-      <h2 id="stats-title">L’impact se transforme en chiffres.</h2>
+      <h2 id="stats-title" class="reveal-title">L’impact se transforme en chiffres.</h2>
       <p>Nous mesurons les progrès avec clarté afin que vous voyiez la différence entre activité et croissance réelle.</p>
     </div>
 
@@ -1439,7 +1449,7 @@
 
     <div class="about-copy">
       <p class="eyebrow">À propos</p>
-      <h2 id="about-title">Nous sommes Prumysl, votre partenaire solaire.</h2>
+      <h2 id="about-title" class="reveal-title">Nous sommes Prumysl, votre partenaire solaire.</h2>
       <p>Au Maroc, nous concevons des solutions pratiques pour la surveillance et l’éclairage extérieur : caméras solaires 4G et projecteurs LED conçus pour fonctionner de manière autonome, avec un support rapide et un service après-vente fiable.</p>
 
       <div class="about-points">
@@ -1458,7 +1468,7 @@
   <section id="contact" class="contact-section" aria-labelledby="contact-title">
     <div class="contact-heading">
       <p class="eyebrow">Contactez-nous</p>
-      <h2 id="contact-title">Construisons la prochaine étape ensemble.</h2>
+      <h2 id="contact-title" class="reveal-title">Construisons la prochaine étape ensemble.</h2>
       <p>Décrivez votre besoin et nous vous répondrons avec une solution claire et adaptée à votre contexte.</p>
     </div>
 
@@ -1494,7 +1504,7 @@
 
   <section id="faq" class="faq-section" aria-labelledby="faq-title">
     <div class="faq-heading">
-      <h2 id="faq-title">Questions auxquelles il faut répondre clairement.</h2>
+      <h2 id="faq-title" class="reveal-title">Questions auxquelles il faut répondre clairement.</h2>
       <p>Tout ce qu’il faut savoir avant de commencer une discussion avec nous.</p>
     </div>
 
@@ -1567,6 +1577,7 @@
 
     const heroTitle = document.querySelector('.hero-title');
     const heroSection = document.querySelector('.hero');
+    const revealTitles = Array.from(document.querySelectorAll('.reveal-title'));
 
     if ('IntersectionObserver' in window && heroTitle && heroSection) {
       const heroObserver = new IntersectionObserver((entries) => {
@@ -1578,6 +1589,21 @@
       heroObserver.observe(heroSection);
     } else if (heroTitle) {
       heroTitle.classList.add('is-visible');
+    }
+
+    if ('IntersectionObserver' in window && revealTitles.length) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      revealTitles.forEach((title) => revealObserver.observe(title));
+    } else {
+      revealTitles.forEach((title) => title.classList.add('is-visible'));
     }
 
     const solutionTabs = Array.from(document.querySelectorAll('.solution-tab'));
