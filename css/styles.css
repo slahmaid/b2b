@@ -1,0 +1,24 @@
+:root {
+  --ink: #171a2d;
+  --muted: #74788d;
+  --blue: #202895;
+  --paper: #ffffff;
+  --line: rgba(23, 26, 45, 0.14);
+  --lime: #d9ef8b;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: "Cairo", sans-serif; background: var(--paper); color: var(--ink); }
+img { max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* Shared design tokens for the workspace */
+.site-shell { max-width: 1400px; margin: 0 auto; }
+
+.logo { display: flex; align-items: center; }
+.logo img { width: 142px; height: auto; }
+
+.lang-switch { display: inline-flex; align-items: center; gap: 4px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+.lang-switch a { min-width: 34px; min-height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; color: var(--muted); font-weight: 700; }
+.lang-switch a.is-active { background: var(--blue); color: #fff; }
